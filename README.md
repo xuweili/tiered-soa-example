@@ -1,13 +1,32 @@
 # tiered-soa-example
 An example to show deferpanic's dapper/zipkin style tracing in a SOA/micro-service environment.
 
+There are a variety of tools out there that show you the HTTP latency
+but very few allow you to drill down from the network call into the
+app layer so you can see stats such as memory && GC at that point in time from
+that service.
+
+The ability to drilldown from a request just like you would do in chrome
+is vital.
+
 Many users implement SOA - service oriented architecture or
 'micro-services' in their companies. We believe this is a sea change and
 want to show you that you can't just install old-school devops agents on
 your boxes anymore - it's vital to be watching your APP traffic flow.
 
 Servers aren't greek gods controlled by the BOFH anymore - they are free
-range cattle.
+range cattle. If a single SRE can control 10k servers where does that
+leave the developer?
+
+We're here to help.
+
+After going through this example you'll be able to see your distributed
+requests like the following:
+
+![shell](https://cloud.githubusercontent.com/assets/22410/8173886/493bad0e-1389-11e5-9f5c-5fa461c225b6.png)
+![list](https://cloud.githubusercontent.com/assets/22410/8173888/507ddb32-1389-11e5-8958-6e56097a0196.png)
+![zeus](https://cloud.githubusercontent.com/assets/22410/8173887/4c1aba60-1389-11e5-8ff7-53a5102966b1.png)
+![athena](https://cloud.githubusercontent.com/assets/22410/8173889/55057cc8-1389-11e5-98b9-0d57fee72ac3.png)
 
 ## QuickStart
 
