@@ -23,9 +23,16 @@ We're here to help.
 After going through this example you'll be able to see your distributed
 requests like the following:
 
+From Your Shell:
 ![shell](https://cloud.githubusercontent.com/assets/22410/8173886/493bad0e-1389-11e5-9f5c-5fa461c225b6.png)
+
+From the High Level View:
 ![list](https://cloud.githubusercontent.com/assets/22410/8173888/507ddb32-1389-11e5-8958-6e56097a0196.png)
+
+Clicking Through to Zeus's View from Olympus:
 ![zeus](https://cloud.githubusercontent.com/assets/22410/8173887/4c1aba60-1389-11e5-8ff7-53a5102966b1.png)
+
+Athena's View from Zeus:
 ![athena](https://cloud.githubusercontent.com/assets/22410/8173889/55057cc8-1389-11e5-98b9-0d57fee72ac3.png)
 
 ## QuickStart
@@ -50,7 +57,7 @@ make
 make run
 ```
 
-In this example we have a total of 5 'micro-services' running, named
+In this example we have a total of 5 micro-services running, named
 naturally after the greek gods.
 
 zeus
