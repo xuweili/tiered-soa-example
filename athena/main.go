@@ -5,7 +5,6 @@ import (
 	"github.com/deferpanic/deferclient/deferstats"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 )
 
 type blah struct {
@@ -15,23 +14,24 @@ type blah struct {
 func handler(w http.ResponseWriter, r *http.Request) {
 
 	// just pass your spanId w/each request
-	resp, err := http.PostForm("http://127.0.0.1:3003/aphrodite",
-		url.Values{"defer_parent_span_id": {deferstats.GetSpanIdString(w)},
-			"blah": {"2"}})
+	client := &http.Client{}
+	r, err := http.NewRequest("POST", "http://127.0.0.1:3003/aphrodite", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
+	r.Header.Add("X-dpparentspanid", deferstats.GetSpanIdString(w))
 
+	resp, err := client.Do(r)
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 
-	resp, err = http.PostForm("http://127.0.0.1:3004/dionysus",
-		url.Values{"defer_parent_span_id": {deferstats.GetSpanIdString(w)},
-			"blah": {"2"}})
+	r, err = http.NewRequest("POST", "http://127.0.0.1:3004/dionysus", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
+	r.Header.Add("X-dpparentspanid", deferstats.GetSpanIdString(w))
 
+	resp, err = client.Do(r)
 	defer resp.Body.Close()
 	body, err = ioutil.ReadAll(resp.Body)
 

@@ -5,29 +5,29 @@ import (
 	"github.com/deferpanic/deferclient/deferstats"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
 
 	// just pass your spanId w/each request
-	resp, err := http.PostForm("http://127.0.0.1:3001/athena",
-		url.Values{"defer_parent_span_id": {deferstats.GetSpanIdString(w)},
-			"blah": {"2"}})
+	client := &http.Client{}
+	r, err := http.NewRequest("POST", "http://127.0.0.1:3001/athena", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
+	r.Header.Add("X-dpparentspanid", deferstats.GetSpanIdString(w))
 
+	resp, err := client.Do(r)
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 
-	resp, err = http.PostForm("http://127.0.0.1:3002/hercules",
-		url.Values{"defer_parent_span_id": {deferstats.GetSpanIdString(w)},
-			"blah": {"2"}})
+	r, err = http.NewRequest("POST", "http://127.0.0.1:3002/hercules", nil)
 	if err != nil {
 		fmt.Println(err)
 	}
+	r.Header.Add("X-dpparentspanid", deferstats.GetSpanIdString(w))
 
+	resp, err = client.Do(r)
 	defer resp.Body.Close()
 	body, err = ioutil.ReadAll(resp.Body)
 
