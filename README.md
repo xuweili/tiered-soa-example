@@ -62,25 +62,27 @@ naturally after the greek gods.
 
 zeus
   - listens on port 3000
-  - latency is 960ms
-
+  - talks to athena
+  - talks to hercules
+  - latency is ~ 1630ms
+ 
 athena
   - listens on port 3001
   - talks to aphrodite
   - talks to dionysus
-  - latency is 710ms
+  - latency is ~ 1120ms
 
 aphrodite
   - listens on port 3003
   - talks to athena
-  - latency is 300ms
+  - latency is ~ 610ms
 
 dionysus
   - listens on port 3004
   - talks to athena
-  - latency is 400ms
+  - latency is ~ 510ms
 
 hercules
   - listens on port 3002
   - talks to hercules
-  - latency is 250ms
+  - latency is ~ 510ms

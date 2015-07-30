@@ -12,7 +12,7 @@ type blah struct {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	time.Sleep(300 * time.Millisecond)
+	time.Sleep(610 * time.Millisecond)
 
 	stuff := blah{
 		Stuff: "reply from aphrodite",
